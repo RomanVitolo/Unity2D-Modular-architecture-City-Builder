@@ -1,0 +1,16 @@
+{
+    "name": "PlacementAPI.Runtime",
+    "rootNamespace": "",
+    "references": [
+        "GUID:939c6c545b474d34eaadce737bdc587e"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
