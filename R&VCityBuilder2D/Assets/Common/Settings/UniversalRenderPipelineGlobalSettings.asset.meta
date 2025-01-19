@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 681886c5eb7344803b6206f758bf0b1c
+guid: 208ff5c0b542d419991875e9a2bb9808
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000
@@ -11,5 +11,5 @@ AssetOrigin:
   productId: 256585
   packageName: 2D Sugar World Asset Pack | URP
   packageVersion: 1.0
-  assetPath: Assets/Common/Settings/UniversalRP.asset
+  assetPath: Assets/Common/Settings/UniversalRenderPipelineGlobalSettings.asset
   uploadId: 589733
