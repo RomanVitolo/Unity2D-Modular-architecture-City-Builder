@@ -5,18 +5,19 @@ namespace Modules.PlacementAPI.Scripts.Runtime
 {
     public class BuildController : MonoBehaviour
     {
-        
-        [SerializeField] private Transform _cursorTransform;
-
         private Camera camera;
+        private GlobalBuildingTypeSO globalBuildingsContainerList;
+        private BuildingTypeSO buildingType;
       
-        private void Start() => camera = Camera.main;
-
-        private void OnEnable()
+        private void Start()
         {
+            camera = Camera.main;
+            globalBuildingsContainerList = Resources.Load<GlobalBuildingTypeSO>(nameof(GlobalBuildingTypeSO));
+            buildingType = globalBuildingsContainerList.BuildingTypesContainer[0];
+            
             GameMotor.Instance.OnDeviceButtonDownEvent(InstantiateCircle);
         }
-
+       
         private void OnDisable()
         {
             GameMotor.Instance.OnRemoveDeviceButtonDownEvent(InstantiateCircle);
@@ -24,14 +25,14 @@ namespace Modules.PlacementAPI.Scripts.Runtime
 
         private void InstantiateCircle()
         {
-            Instantiate(_cursorTransform, GetCurrentDeviceWorldPosition(), Quaternion.identity);
+            Instantiate(buildingType.PrefabType, GetCurrentDeviceWorldPosition(), Quaternion.identity);
         }
 
         private Vector3 GetCurrentDeviceWorldPosition()
         {
-            Vector3 currentdPosition = camera.ScreenToWorldPoint(GameMotor.Instance.GetPointPosition);
-            currentdPosition.z = 0;
-            return currentdPosition;
+            Vector3 currentPosition = camera.ScreenToWorldPoint(GameMotor.Instance.GetPointPosition);
+            currentPosition.z = 0;
+            return currentPosition;
         }
     }
 }

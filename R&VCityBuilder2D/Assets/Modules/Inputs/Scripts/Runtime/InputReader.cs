@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 namespace Modules.Inputs.Scripts.Runtime
 {
-    [CreateAssetMenu(fileName = "New InputReader", menuName = "Input System/InputReader")]
+    [CreateAssetMenu(fileName = "New InputReader", menuName = "Modules/Input System/InputReader")]
     public class InputReader : ScriptableObject, IControls.IPlayerActions
     {
         public Vector2 PointPosition { get; private set; }

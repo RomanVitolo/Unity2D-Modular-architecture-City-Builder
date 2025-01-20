@@ -4,28 +4,20 @@ using UnityEngine;
 
 namespace Modules.GameEngine.Core.Scripts
 {
-    public class GameMotor : MonoBehaviour
+    public class GameMotor : Singleton<GameMotor>
     {
         [field: SerializeField] public InputReader InputReader { get; private set; }
-
-        public static GameMotor Instance;
-
-        public void OnDeviceButtonDownEvent(Action RegisterAction) => InputReader.OnClickButtonDown += RegisterAction;
-        public void OnRemoveDeviceButtonDownEvent(Action RemoveAction) => InputReader.OnClickButtonDown -= RemoveAction;
-
+        public void OnDeviceButtonDownEvent(Action registerAction) => InputReader.OnClickButtonDown += registerAction;
+        public void OnRemoveDeviceButtonDownEvent(Action removeAction) => InputReader.OnClickButtonDown -= removeAction;
         public Vector2 GetPointPosition => InputReader.PointPosition;
-       
-    
-        private void Awake()
+
+        protected override void Awake()
         {
-            Instance = this;
-        
+            base.Awake();
+            
             InputReader.InitializeInputs();
         }
 
-        private void OnDestroy()
-        {
-            InputReader.DeinitializeInputs();
-        }
+        private void OnDestroy() => InputReader.DeinitializeInputs();
     }
 }
