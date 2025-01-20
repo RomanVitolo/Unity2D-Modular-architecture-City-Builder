@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f86239d26df4933bdbafd18cd1e3610, type: 3}
-  m_Name: Gold
+  m_Name: Cherry
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Gold
+  <Name>k__BackingField: Cherry

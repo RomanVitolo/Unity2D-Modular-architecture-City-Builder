@@ -6,9 +6,10 @@ namespace Modules.PlacementAPI.Scripts.Runtime
 {
     public class ResourcesController : MonoBehaviour
     {
-        private Dictionary<ResourceTypeSO, int> resourcesAmountDict = new Dictionary<ResourceTypeSO, int>();
+        private readonly Dictionary<ResourceTypeSO, int> resourcesAmountDict = new Dictionary<ResourceTypeSO, int>();
 
         private GlobalResourceTypeSO globalResourcesContainerList;
+
         private void Start()
         {
             globalResourcesContainerList = Resources.Load<GlobalResourceTypeSO>(nameof(GlobalResourceTypeSO));
@@ -21,13 +22,11 @@ namespace Modules.PlacementAPI.Scripts.Runtime
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                globalResourcesContainerList = Resources.Load<GlobalResourceTypeSO>(nameof(GlobalResourceTypeSO));
-                AddResource(globalResourcesContainerList.ResourceTypeContainer[0], 2);
-                TestResourcesLog();
-            }
-                
+            if (!Input.GetKeyDown(KeyCode.Space)) return;
+            globalResourcesContainerList = Resources.Load<GlobalResourceTypeSO>(nameof(GlobalResourceTypeSO));
+            AddResource(globalResourcesContainerList.ResourceTypeContainer[0], 2);
+            TestResourcesLog();
+
         }
 
         private void TestResourcesLog()
@@ -43,5 +42,10 @@ namespace Modules.PlacementAPI.Scripts.Runtime
             resourcesAmountDict[resourceTypeSO] += amount;
             TestResourcesLog();
         }
-    }
+
+        public int ResourceAmount(ResourceTypeSO resourceTypeSo)
+        {
+            return resourcesAmountDict[resourceTypeSo];
+        }
+}
 }

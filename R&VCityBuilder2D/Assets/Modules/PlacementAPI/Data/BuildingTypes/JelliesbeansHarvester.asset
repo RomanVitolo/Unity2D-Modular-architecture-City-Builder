@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51dfc7c32eb040e584e91ce8f1ea27f7, type: 3}
-  m_Name: WoodHarvester
+  m_Name: JelliesbeansHarvester
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: WoodHarvester
-  <PrefabType>k__BackingField: {fileID: 4325366361069683961, guid: bc301b39a1c9f5d418b8a88306891a4d,
+  <Name>k__BackingField: JelliesbeansHarvester
+  <PrefabType>k__BackingField: {fileID: 4325366361069683961, guid: 42f9b419efb6ccc49b833df082d2e077,
     type: 3}
   <ResourcesGenerateData>k__BackingField:
-    MaxTimer: 0.5
+    MaxTimer: 1
     ResourceType: {fileID: 11400000, guid: ea999e78e5556074fa593176e0ae63ea, type: 2}
