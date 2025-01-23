@@ -6,6 +6,8 @@ namespace Modules.PlacementAPI.Scripts.Runtime
 {
     public class ResourcesController : MonoBehaviour
     {
+        public event EventHandler OnResourceAmountChanged; 
+        
         private readonly Dictionary<ResourceTypeSO, int> resourcesAmountDict = new Dictionary<ResourceTypeSO, int>();
 
         private GlobalResourceTypeSO globalResourcesContainerList;
@@ -40,6 +42,7 @@ namespace Modules.PlacementAPI.Scripts.Runtime
         public void AddResource(ResourceTypeSO resourceTypeSO, int amount)
         {
             resourcesAmountDict[resourceTypeSO] += amount;
+            OnResourceAmountChanged?.Invoke(this, EventArgs.Empty);
             TestResourcesLog();
         }
 

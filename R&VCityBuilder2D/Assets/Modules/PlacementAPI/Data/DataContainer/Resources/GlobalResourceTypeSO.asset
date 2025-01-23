@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: GlobalResourceTypeSO
   m_EditorClassIdentifier: 
   <ResourceTypeContainer>k__BackingField:
+  - {fileID: 11400000, guid: 08399d5bbd70a374392ecee7ac0085ba, type: 2}
   - {fileID: 11400000, guid: ea999e78e5556074fa593176e0ae63ea, type: 2}
   - {fileID: 11400000, guid: 604e989ff14c25047b5d55124736c7d3, type: 2}
-  - {fileID: 11400000, guid: 08399d5bbd70a374392ecee7ac0085ba, type: 2}
