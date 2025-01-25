@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace Modules.Inputs.Scripts.Runtime
@@ -8,6 +9,8 @@ namespace Modules.Inputs.Scripts.Runtime
     public class InputReader : ScriptableObject, IControls.IPlayerActions
     {
         public Vector2 PointPosition { get; private set; }
+        public Vector2 MovementInputValue { get; private set; }
+        public Vector2 ZoomInputValue { get; private set; }
         public event Action OnClickButtonDown;
 
         private IControls controls;
@@ -26,13 +29,22 @@ namespace Modules.Inputs.Scripts.Runtime
         
         public void OnInputPosition(InputAction.CallbackContext context)
         {
-            if(context.performed)
-                PointPosition = context.ReadValue<Vector2>();
+           PointPosition = context.ReadValue<Vector2>();
         }
 
         public void OnInputButton(InputAction.CallbackContext context)
         {
             if (context.performed) OnClickButtonDown?.Invoke();
+        }
+
+        public void OnInputKeyBinding(InputAction.CallbackContext context)
+        {
+           MovementInputValue = context.ReadValue<Vector2>();
+        }
+
+        public void OnInputZoom(InputAction.CallbackContext context)
+        {
+           ZoomInputValue = context.ReadValue<Vector2>();
         }
     }
 }

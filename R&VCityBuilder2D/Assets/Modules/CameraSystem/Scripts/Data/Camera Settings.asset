@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdf65baa6dc64ef6afebe70224700fd8, type: 3}
+  m_Name: Camera Settings
+  m_EditorClassIdentifier: 
+  <CameraMoveSpeed>k__BackingField: 30
+  <CameraZoomAmount>k__BackingField: 2
+  <CameraZoomSpeed>k__BackingField: 5
+  <CameraMinZoomSize>k__BackingField: 10
+  <CameraMaxZoomSize>k__BackingField: 30
+  <OrthographicZoomSize>k__BackingField: 15

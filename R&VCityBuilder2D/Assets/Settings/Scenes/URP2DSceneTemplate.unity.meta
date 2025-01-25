@@ -10,5 +10,5 @@ AssetOrigin:
   productId: 256585
   packageName: 2D Sugar World Asset Pack | URP
   packageVersion: 1.0
-  assetPath: Assets/Common/Settings/Scenes/URP2DSceneTemplate.unity
+  assetPath: Assets/Settings/Scenes/URP2DSceneTemplate.unity
   uploadId: 589733
