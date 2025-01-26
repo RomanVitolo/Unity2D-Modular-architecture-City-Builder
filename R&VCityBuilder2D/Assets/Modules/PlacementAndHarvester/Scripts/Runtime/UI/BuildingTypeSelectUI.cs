@@ -7,14 +7,14 @@ namespace Modules.PlacementAPI.Scripts.Runtime.UI
 {
     public class BuildingTypeSelectUI : MonoBehaviour
     {
+        public event Action OnActiveBuildingTypeChanged;
+        
         [SerializeField] private Sprite _arrowSprite;
         [SerializeField] private BuildController _buildController;
         [SerializeField] private Transform _templateButton;
 
         private Dictionary<BuildingTypeSO, Transform> _buttonTransformsDictionary;
         private Transform arrowButton;
-        
-        public event Action OnActiveBuildingTypeChanged;
         private void Awake()
         {
             _buttonTransformsDictionary = new Dictionary<BuildingTypeSO, Transform>();
@@ -61,12 +61,7 @@ namespace Modules.PlacementAPI.Scripts.Runtime.UI
                 index++;
             }
         }
-
-        private void Start()
-        {
-            OnActiveBuildingTypeChanged += ActiveBuildingTypeButton;
-        }
-
+        private void Start() => OnActiveBuildingTypeChanged += ActiveBuildingTypeButton;
         private void ActiveBuildingTypeButton()
         {
             arrowButton.Find("Selected").gameObject.SetActive(false);
@@ -84,10 +79,6 @@ namespace Modules.PlacementAPI.Scripts.Runtime.UI
             else
                 _buttonTransformsDictionary[activeBuildingType].Find("Selected").gameObject.SetActive(true);
         }
-        
-        private void OnDestroy()
-        {
-            OnActiveBuildingTypeChanged -= ActiveBuildingTypeButton;
-        }
+        private void OnDestroy() => OnActiveBuildingTypeChanged -= ActiveBuildingTypeButton;
     }
 }

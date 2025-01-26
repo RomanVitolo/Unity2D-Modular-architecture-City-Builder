@@ -1,4 +1,5 @@
-﻿using Modules.GameEngine.Core.Scripts;
+﻿using System;
+using Modules.GameEngine.Core.Scripts;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -6,44 +7,32 @@ namespace Modules.PlacementAPI.Scripts.Runtime
 {
     public class BuildController : MonoBehaviour
     {
-        private Camera camera;
+        public event EventHandler<OnActiveBuildingTypeChangedEvent> OnActiveBuildingTypeChanged;
+        public class OnActiveBuildingTypeChangedEvent : EventArgs { public BuildingTypeSO ActiveBuilding { get; set; } }
+        
         private GlobalBuildingTypeSO globalBuildingsContainerList;
         private BuildingTypeSO activeBuildingType;
-      
         private void Start()
         {
-            camera = Camera.main;
             globalBuildingsContainerList = Resources.Load<GlobalBuildingTypeSO>(nameof(GlobalBuildingTypeSO));
             
             GameMotor.Instance.OnDeviceButtonDownEvent(InstantiateCircle);
         }
-       
-        private void OnDisable()
-        {
-            GameMotor.Instance.OnRemoveDeviceButtonDownEvent(InstantiateCircle);
-        }
-
         private void InstantiateCircle()
         {
             if(activeBuildingType is not null && !EventSystem.current.IsPointerOverGameObject())
-                Instantiate(activeBuildingType.PrefabType, GetCurrentDeviceWorldPosition(), Quaternion.identity);
-        }
-
-        private Vector3 GetCurrentDeviceWorldPosition()
-        {
-            Vector3 currentPosition = camera.ScreenToWorldPoint(GameMotor.Instance.GetPointPosition);
-            currentPosition.z = 0;
-            return currentPosition;
+                Instantiate(activeBuildingType.PrefabType, GameMotor.Instance.GetCurrentDeviceWorldPosition(), Quaternion.identity);
         }
 
         public void SetActiveBuildingType(BuildingTypeSO buildingType)
         {
             activeBuildingType = buildingType;
+            OnActiveBuildingTypeChanged?.Invoke(this, new OnActiveBuildingTypeChangedEvent
+            {
+                ActiveBuilding = activeBuildingType
+            });
         }
-
-        public BuildingTypeSO GetActiveBuildingType()
-        {
-            return activeBuildingType;
-        }
+        public BuildingTypeSO GetActiveBuildingType() => activeBuildingType;
+        private void OnDisable() => GameMotor.Instance.OnRemoveDeviceButtonDownEvent(InstantiateCircle);
     }
 }
