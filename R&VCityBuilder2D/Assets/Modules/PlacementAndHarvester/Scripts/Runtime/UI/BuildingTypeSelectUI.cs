@@ -12,6 +12,7 @@ namespace Modules.PlacementAPI.Scripts.Runtime.UI
         [SerializeField] private Sprite _arrowSprite;
         [SerializeField] private BuildController _buildController;
         [SerializeField] private Transform _templateButton;
+        [SerializeField] private List<BuildingTypeSO> _ignoredBuildingTypes = new List<BuildingTypeSO>();
 
         private Dictionary<BuildingTypeSO, Transform> _buttonTransformsDictionary;
         private Transform arrowButton;
@@ -43,13 +44,15 @@ namespace Modules.PlacementAPI.Scripts.Runtime.UI
             
             foreach (var buildingType in globalBuildingsContainerList.BuildingTypesContainer)
             {
+                if(_ignoredBuildingTypes.Contains(buildingType)) continue;
+                
                 var btnTransform = Instantiate(_templateButton, transform);
                 btnTransform.gameObject.SetActive(true);
 
                 offsetAmount = +130f;
                 btnTransform.GetComponent<RectTransform>().anchoredPosition = new Vector2(offsetAmount * index, 0);
 
-                btnTransform.Find("Image").GetComponent<Image>().sprite = buildingType.BuildingSrite;
+                btnTransform.Find("Image").GetComponent<Image>().sprite = buildingType.BuildingSprite;
 
                 btnTransform.GetComponent<Button>().onClick.AddListener(() =>
                 {

@@ -11,9 +11,9 @@ namespace Modules.GameEngine.Core.Scripts
         {
             get
             {
-                if (_instance == null)
+                if (_instance is null)
                 {
-                    Debug.LogError("[Singleton] Instance of " + typeof(T) + " is not set up in the scene.");
+                    Debug.LogWarning("[Singleton] Instance of " + typeof(T) + " is not set up in the scene.");
                 }
                 return _instance;
             }

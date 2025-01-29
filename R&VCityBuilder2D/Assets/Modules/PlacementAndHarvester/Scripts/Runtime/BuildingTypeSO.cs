@@ -6,8 +6,9 @@ namespace Modules.PlacementAPI.Scripts.Runtime
     public class BuildingTypeSO : ScriptableObject
     {
         [field: SerializeField] public string Name { get; private set; }
-        [field: SerializeField] public Sprite BuildingSrite { get; private set; }
+        [field: SerializeField] public Sprite BuildingSprite { get; private set; }
         [field: SerializeField] public Transform PrefabType { get; private set; }
         [field: SerializeField] public ResourcesGenerateData ResourcesGenerateData { get; private set; }
+        [field: SerializeField] public float MinPlacementRadius { get; private set; }
     }
 }

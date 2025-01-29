@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51dfc7c32eb040e584e91ce8f1ea27f7, type: 3}
-  m_Name: JelliesbeansHarvester
+  m_Name: MainHouse
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: JelliesbeansHarvester
-  <BuildingSprite>k__BackingField: {fileID: 21300000, guid: 529c153db8b023c409ff2f0eda7db64f,
+  <Name>k__BackingField: MainHouse
+  <BuildingSprite>k__BackingField: {fileID: 21300000, guid: 8eb5be8d0286a7a488c9a23b8dc90838,
     type: 3}
-  <PrefabType>k__BackingField: {fileID: 4325366361069683961, guid: 42f9b419efb6ccc49b833df082d2e077,
+  <PrefabType>k__BackingField: {fileID: 4325366361069683961, guid: c5bd14304f767e2438c634e0f1c2ea57,
     type: 3}
   <ResourcesGenerateData>k__BackingField:
     MaxTimer: 1
-    ResourceType: {fileID: 11400000, guid: ea999e78e5556074fa593176e0ae63ea, type: 2}
+    ResourceType: {fileID: 11400000, guid: 08399d5bbd70a374392ecee7ac0085ba, type: 2}
     ResourceDetectionRadius: 7
     MaxResourceAmount: 7
-  <MinPlacementRadius>k__BackingField: 7
+  <MinPlacementRadius>k__BackingField: 0

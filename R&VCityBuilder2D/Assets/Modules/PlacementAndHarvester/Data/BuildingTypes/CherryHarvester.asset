@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: CherryHarvester
   m_EditorClassIdentifier: 
   <Name>k__BackingField: CherryHarvester
-  <BuildingSrite>k__BackingField: {fileID: 21300000, guid: 9d0743122f4a68c4f88f8a18e491f4cd,
+  <BuildingSprite>k__BackingField: {fileID: 21300000, guid: 9d0743122f4a68c4f88f8a18e491f4cd,
     type: 3}
   <PrefabType>k__BackingField: {fileID: 4325366361069683961, guid: bbe91ea7a0df09844a12af8205b2f477,
     type: 3}
   <ResourcesGenerateData>k__BackingField:
     MaxTimer: 2
     ResourceType: {fileID: 11400000, guid: 604e989ff14c25047b5d55124736c7d3, type: 2}
+    ResourceDetectionRadius: 7
+    MaxResourceAmount: 7
+  <MinPlacementRadius>k__BackingField: 7

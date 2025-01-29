@@ -7,5 +7,7 @@ namespace Modules.PlacementAPI.Scripts.Runtime
     {
         public float MaxTimer;
         public ResourceTypeSO ResourceType;
+        public float ResourceDetectionRadius;
+        public int MaxResourceAmount;
     }
 }

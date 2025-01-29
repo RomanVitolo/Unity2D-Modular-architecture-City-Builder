@@ -27,28 +27,13 @@ namespace Modules.PlacementAPI.Scripts.Runtime
             if (!Input.GetKeyDown(KeyCode.Space)) return;
             globalResourcesContainerList = Resources.Load<GlobalResourceTypeSO>(nameof(GlobalResourceTypeSO));
             AddResource(globalResourcesContainerList.ResourceTypeContainer[0], 2);
-            TestResourcesLog();
-
-        }
-
-        private void TestResourcesLog()
-        {
-            foreach (var resourceType in resourcesAmountDict.Keys)
-            {
-                Debug.Log(resourceType.Name + ": " + resourcesAmountDict[resourceType]);
-            }
         }
 
         public void AddResource(ResourceTypeSO resourceTypeSO, int amount)
         {
             resourcesAmountDict[resourceTypeSO] += amount;
             OnResourceAmountChanged?.Invoke(this, EventArgs.Empty);
-            TestResourcesLog();
         }
-
-        public int ResourceAmount(ResourceTypeSO resourceTypeSo)
-        {
-            return resourcesAmountDict[resourceTypeSo];
-        }
-}
+        public int ResourceAmount(ResourceTypeSO resourceTypeSo) => resourcesAmountDict[resourceTypeSo];
+    }
 }

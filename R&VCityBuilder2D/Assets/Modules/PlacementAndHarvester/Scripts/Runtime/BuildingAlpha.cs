@@ -22,7 +22,7 @@ namespace Modules.PlacementAPI.Scripts.Runtime
             if (e.ActiveBuilding is null)
                 Hide();
             else
-                Show(e.ActiveBuilding.BuildingSrite);
+                Show(e.ActiveBuilding.BuildingSprite);
         }
         private void Show(Sprite alphaSprite)
         {

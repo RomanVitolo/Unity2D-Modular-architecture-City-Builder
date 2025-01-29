@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Modules.PlacementAPI.Scripts.Runtime
 {
     public class ResourceGenerator : MonoBehaviour
     {
-        private BuildingTypeSO buildingType;
+        private ResourcesGenerateData resourcesGenerateData;
         private ResourcesController resourcesController;
         
         private float timer;
@@ -13,8 +14,39 @@ namespace Modules.PlacementAPI.Scripts.Runtime
         private void Awake()
         {
             resourcesController = FindAnyObjectByType<ResourcesController>();
-            buildingType = GetComponent<BuildingTypeHolder>().BuildingType;
-            maxTimer = buildingType.ResourcesGenerateData.MaxTimer;
+            resourcesGenerateData = GetComponent<BuildingTypeHolder>().BuildingType.ResourcesGenerateData;
+            maxTimer = resourcesGenerateData.MaxTimer;
+        }
+
+        private void Start()
+        {
+            var colliders = Physics2D.OverlapCircleAll(transform.position, 
+                resourcesGenerateData.ResourceDetectionRadius);
+            int nearbyResourceAmount = 0;
+            foreach (var collider in colliders)
+            {
+                var resourceNode = collider.GetComponent<ResourceNode>();
+                if (resourceNode is not null)
+                {
+                    if (resourceNode.ResourceType == resourcesGenerateData.ResourceType)
+                    {
+                        nearbyResourceAmount++;
+                    }
+                }
+            }
+            
+            nearbyResourceAmount = Mathf.Clamp(nearbyResourceAmount, 0, resourcesGenerateData.MaxResourceAmount);
+            
+            if(nearbyResourceAmount == 0)
+            {
+                enabled = false;
+            }
+            else
+            {
+                maxTimer = (resourcesGenerateData.MaxTimer / 2f) + resourcesGenerateData.MaxTimer * 
+                    (1 - (float) nearbyResourceAmount / resourcesGenerateData.MaxResourceAmount);
+            }
+            Debug.Log("NearbyResourceAmount " + nearbyResourceAmount + "; " + maxTimer);
         }
 
         private void Update()
@@ -23,9 +55,8 @@ namespace Modules.PlacementAPI.Scripts.Runtime
             if (timer <= 0)
             {
                 timer += maxTimer;
-                resourcesController.AddResource(buildingType.ResourcesGenerateData.ResourceType, 1);
+                resourcesController.AddResource(resourcesGenerateData.ResourceType, 1);
             }
-                
         }
     }
 }

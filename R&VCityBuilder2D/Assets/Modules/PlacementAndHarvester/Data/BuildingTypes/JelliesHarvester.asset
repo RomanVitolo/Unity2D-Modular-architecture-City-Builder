@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: JelliesHarvester
   m_EditorClassIdentifier: 
   <Name>k__BackingField: JellyHarvester
-  <BuildingSrite>k__BackingField: {fileID: 21300000, guid: 6a1ee443812c58e468e6c253d7e78877,
+  <BuildingSprite>k__BackingField: {fileID: 21300000, guid: 6a1ee443812c58e468e6c253d7e78877,
     type: 3}
   <PrefabType>k__BackingField: {fileID: 4325366361069683961, guid: bc301b39a1c9f5d418b8a88306891a4d,
     type: 3}
   <ResourcesGenerateData>k__BackingField:
     MaxTimer: 0.5
     ResourceType: {fileID: 11400000, guid: 08399d5bbd70a374392ecee7ac0085ba, type: 2}
+    ResourceDetectionRadius: 7
+    MaxResourceAmount: 7
+  <MinPlacementRadius>k__BackingField: 7
