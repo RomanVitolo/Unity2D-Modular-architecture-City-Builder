@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CodiceApp.EventTracking;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +9,8 @@ namespace Modules.PlacementAPI.Scripts.Runtime.UI
     public class BuildingTypeSelectUI : MonoBehaviour
     {
         public event Action OnActiveBuildingTypeChanged;
-        
+
+        [SerializeField] private ToolTipUI _toolTip;
         [SerializeField] private Sprite _arrowSprite;
         [SerializeField] private BuildController _buildController;
         [SerializeField] private Transform _templateButton;
@@ -20,6 +22,7 @@ namespace Modules.PlacementAPI.Scripts.Runtime.UI
         {
             _buttonTransformsDictionary = new Dictionary<BuildingTypeSO, Transform>();
             if(_buildController is null) _buildController = FindAnyObjectByType<BuildController>();
+            if(_toolTip is null) _toolTip = FindAnyObjectByType<ToolTipUI>();
             
             _templateButton.gameObject.SetActive(false);
             
@@ -40,6 +43,18 @@ namespace Modules.PlacementAPI.Scripts.Runtime.UI
                 _buildController.SetActiveBuildingType(null);
                 OnActiveBuildingTypeChanged?.Invoke();
             });
+            
+            var mouseEnterExitEvents = arrowButton.GetComponent<MouseEnterExitEvents>();
+            mouseEnterExitEvents.OnMouseEnter += (object EventSender, EventArgs e) =>
+            {
+                _toolTip.Show("Arrow");
+            };
+                
+            mouseEnterExitEvents.OnMouseExit += (object EventSender, EventArgs e) =>
+            {
+                _toolTip.Hide();
+            };
+            
             index++;
             
             foreach (var buildingType in globalBuildingsContainerList.BuildingTypesContainer)
@@ -59,6 +74,17 @@ namespace Modules.PlacementAPI.Scripts.Runtime.UI
                     _buildController.SetActiveBuildingType(buildingType);
                     OnActiveBuildingTypeChanged?.Invoke();
                 });
+
+                mouseEnterExitEvents = btnTransform.GetComponentInChildren<MouseEnterExitEvents>();
+                mouseEnterExitEvents.OnMouseEnter += (object EventSender, EventArgs e) =>
+                {
+                    _toolTip.Show(buildingType.Name + "\n" + buildingType.ShowConstructionsResourceCost());
+                };
+                
+                mouseEnterExitEvents.OnMouseExit += (object EventSender, EventArgs e) =>
+                {
+                    _toolTip.Hide();
+                };
                 
                 _buttonTransformsDictionary[buildingType] = btnTransform;
                 index++;

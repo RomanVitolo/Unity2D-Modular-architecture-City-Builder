@@ -11,5 +11,16 @@ namespace Modules.PlacementAPI.Scripts.Runtime
         [field: SerializeField] public ResourcesGenerateData ResourcesGenerateData { get; private set; }
         [field: SerializeField] public float MinPlacementRadius { get; private set; }
         [field: SerializeField] public ResourceAmount[] ConstructionsResourceCost { get; private set; }
+
+        public string ShowConstructionsResourceCost()
+        {
+            var text = string.Empty;
+            foreach (var resourceAmount in ConstructionsResourceCost)
+            {
+                text += "<color=#" + resourceAmount.ResourceType.ColorHex + ">" + 
+                        resourceAmount.ResourceType.Name + " " + resourceAmount.Amount + "</color> ";
+            }
+            return text;
+        }
     }
 }
