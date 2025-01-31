@@ -1,4 +1,5 @@
 ﻿using Modules.GameEngine.Core.Scripts;
+using Modules.PlacementAPI.Scripts.Runtime.UI;
 using UnityEngine;
 
 namespace Modules.PlacementAPI.Scripts.Runtime
@@ -7,7 +8,7 @@ namespace Modules.PlacementAPI.Scripts.Runtime
     {
         [SerializeField] private BuildController _buildController;
         [SerializeField] private GameObject _spriteGameObject;
-
+        [SerializeField] private ResourceNearbyOverlay _resourceNearbyOverlay;
         private void Awake()
         {
             _buildController ??= FindAnyObjectByType<BuildController>();
@@ -20,9 +21,15 @@ namespace Modules.PlacementAPI.Scripts.Runtime
         private void ActionWhenBuildingTypeChanged(object sender, BuildController.OnActiveBuildingTypeChangedEvent e)
         {
             if (e.ActiveBuilding is null)
+            {
                 Hide();
+                _resourceNearbyOverlay.Hide();
+            }
             else
+            {
                 Show(e.ActiveBuilding.BuildingSprite);
+                _resourceNearbyOverlay.Show(e.ActiveBuilding.ResourcesGenerateData);
+            }
         }
         private void Show(Sprite alphaSprite)
         {

@@ -10,5 +10,6 @@ namespace Modules.PlacementAPI.Scripts.Runtime
         [field: SerializeField] public Transform PrefabType { get; private set; }
         [field: SerializeField] public ResourcesGenerateData ResourcesGenerateData { get; private set; }
         [field: SerializeField] public float MinPlacementRadius { get; private set; }
+        [field: SerializeField] public ResourceAmount[] ConstructionsResourceCost { get; private set; }
     }
 }

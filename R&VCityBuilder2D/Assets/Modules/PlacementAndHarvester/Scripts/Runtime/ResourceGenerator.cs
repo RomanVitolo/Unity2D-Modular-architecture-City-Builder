@@ -10,17 +10,27 @@ namespace Modules.PlacementAPI.Scripts.Runtime
         
         private float timer;
         private float maxTimer;
-
         private void Awake()
         {
             resourcesController = FindAnyObjectByType<ResourcesController>();
             resourcesGenerateData = GetComponent<BuildingTypeHolder>().BuildingType.ResourcesGenerateData;
             maxTimer = resourcesGenerateData.MaxTimer;
         }
-
-        private void Start()
+        private void Start() => ManageResourceNodes();
+        private void Update() => ManageResourcesTimer();
+        private void ManageResourcesTimer()
         {
-            var colliders = Physics2D.OverlapCircleAll(transform.position, 
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                timer += maxTimer;
+                resourcesController.AddResource(resourcesGenerateData.ResourceType, 1);
+            }
+        }
+
+        public static int GetNearbyResourceAmount(ResourcesGenerateData resourcesGenerateData, Vector3 position)
+        {
+            var colliders = Physics2D.OverlapCircleAll(position, 
                 resourcesGenerateData.ResourceDetectionRadius);
             int nearbyResourceAmount = 0;
             foreach (var collider in colliders)
@@ -36,7 +46,12 @@ namespace Modules.PlacementAPI.Scripts.Runtime
             }
             
             nearbyResourceAmount = Mathf.Clamp(nearbyResourceAmount, 0, resourcesGenerateData.MaxResourceAmount);
-            
+            return nearbyResourceAmount;
+        }
+
+        private void ManageResourceNodes()
+        {
+            int nearbyResourceAmount = GetNearbyResourceAmount(resourcesGenerateData, transform.position);
             if(nearbyResourceAmount == 0)
             {
                 enabled = false;
@@ -48,15 +63,8 @@ namespace Modules.PlacementAPI.Scripts.Runtime
             }
             Debug.Log("NearbyResourceAmount " + nearbyResourceAmount + "; " + maxTimer);
         }
-
-        private void Update()
-        {
-            timer -= Time.deltaTime;
-            if (timer <= 0)
-            {
-                timer += maxTimer;
-                resourcesController.AddResource(resourcesGenerateData.ResourceType, 1);
-            }
-        }
+        public ResourcesGenerateData GetResourceGeneratorData() => resourcesGenerateData;
+        public float GetTimerNormalized() => timer / maxTimer;
+        public float GetAmountGeneratedPerSecond() => 1 / maxTimer;
     }
 }

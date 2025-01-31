@@ -23,3 +23,8 @@ MonoBehaviour:
     ResourceDetectionRadius: 7
     MaxResourceAmount: 7
   <MinPlacementRadius>k__BackingField: 7
+  <ConstructionsResourceCost>k__BackingField:
+  - ResourceType: {fileID: 11400000, guid: 08399d5bbd70a374392ecee7ac0085ba, type: 2}
+    Amount: 50
+  - ResourceType: {fileID: 11400000, guid: ea999e78e5556074fa593176e0ae63ea, type: 2}
+    Amount: 50

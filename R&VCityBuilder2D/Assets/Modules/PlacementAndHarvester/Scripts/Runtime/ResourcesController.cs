@@ -34,6 +34,26 @@ namespace Modules.PlacementAPI.Scripts.Runtime
             resourcesAmountDict[resourceTypeSO] += amount;
             OnResourceAmountChanged?.Invoke(this, EventArgs.Empty);
         }
-        public int ResourceAmount(ResourceTypeSO resourceTypeSo) => resourcesAmountDict[resourceTypeSo];
+        public int GetResourceAmount(ResourceTypeSO resourceTypeSo) => resourcesAmountDict[resourceTypeSo];
+
+        public bool CanAfford(ResourceAmount[] resourceAmounts)
+        {
+            foreach (var resourceAmount in resourceAmounts)
+            {
+                if (GetResourceAmount(resourceAmount.ResourceType) >= resourceAmount.Amount)
+                {
+                    
+                }
+                else
+                    return false;
+            }
+            return true;
+        }
+        
+        public void SpendResources(ResourceAmount[] resourceAmounts)
+        {
+            foreach (var resourceAmount in resourceAmounts)
+                resourcesAmountDict[resourceAmount.ResourceType] -= resourceAmount.Amount;
+        }
     }
 }

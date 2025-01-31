@@ -10,6 +10,8 @@ namespace Modules.PlacementAPI.Scripts.Runtime
         public event EventHandler<OnActiveBuildingTypeChangedEvent> OnActiveBuildingTypeChanged;
         public class OnActiveBuildingTypeChangedEvent : EventArgs { public BuildingTypeSO ActiveBuilding { get; set; } }
         
+        [SerializeField] private ResourcesController _resourcesController;
+        
         private GlobalBuildingTypeSO globalBuildingsContainerList;
         private BuildingTypeSO activeBuildingType;
         private void Start()
@@ -20,15 +22,14 @@ namespace Modules.PlacementAPI.Scripts.Runtime
         }
         private void InstantiateCircle()
         {
-            if (!EventSystem.current.IsPointerOverGameObject())
-            {
-                if (activeBuildingType is not null 
-                    && CanSpawnBuilding(activeBuildingType, GameMotor.Instance.GetCurrentDeviceWorldPosition()))
-                {
-                    Instantiate(activeBuildingType.PrefabType, GameMotor.Instance.GetCurrentDeviceWorldPosition(),
-                        Quaternion.identity);
-                }
-            }
+            if (EventSystem.current.IsPointerOverGameObject()) return;
+            if (activeBuildingType is null
+                || !CanSpawnBuilding(activeBuildingType, GameMotor.Instance.GetCurrentDeviceWorldPosition()))
+                return;
+            if (!_resourcesController.CanAfford(activeBuildingType.ConstructionsResourceCost)) return;
+            _resourcesController.SpendResources(activeBuildingType.ConstructionsResourceCost);
+            Instantiate(activeBuildingType.PrefabType, GameMotor.Instance.GetCurrentDeviceWorldPosition(),
+                Quaternion.identity);
         }
 
         public void SetActiveBuildingType(BuildingTypeSO buildingType)

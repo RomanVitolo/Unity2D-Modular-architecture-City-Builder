@@ -50,7 +50,7 @@ namespace Modules.PlacementAPI.Scripts.Runtime.UI
         {
             foreach (var resourceType in globalResourcesContainerList.ResourceTypeContainer)
             {
-                int resourceAmount = _resourcesController.ResourceAmount(resourceType);
+                int resourceAmount = _resourcesController.GetResourceAmount(resourceType);
                 var resourceTransform = resourceTypeTransformDictionary[resourceType];
                 resourceTransform.Find("ResourceText").GetComponent<TextMeshProUGUI>().SetText(resourceAmount.ToString());
             }
