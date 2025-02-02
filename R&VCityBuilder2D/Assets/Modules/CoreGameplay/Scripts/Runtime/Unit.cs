@@ -5,8 +5,9 @@ using UnityEngine;
 
 namespace Modules.CoreGameplay.Scripts.Runtime
 {
-    public class BuildingUnit : MonoBehaviour, IBuildingTarget
+    public class Unit : MonoBehaviour, ITarget
     {
+        public Entities Entity;
         [SerializeField] private BuildingTypeHolder _buildingTypeHolder;
         
         private HealthUnit _healthUnit;
@@ -31,6 +32,8 @@ namespace Modules.CoreGameplay.Scripts.Runtime
             Destroy(gameObject);
         }
 
+        public Entities EntityType => Entity;
+        
         public Transform GetTransform()
         {
             return this.transform;

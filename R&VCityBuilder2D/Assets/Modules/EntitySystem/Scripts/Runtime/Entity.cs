@@ -1,9 +1,18 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
+
+public enum Entities
+{
+    Building,
+    Enemy
+}
 
 namespace Modules.EntitySystem.Scripts.Runtime
 {
     public abstract class Entity : MonoBehaviour
     {
+        [SerializeField] protected Entities _entityTarget;
+        
         protected Transform target;
         protected float waitForTargetTimer;
         protected float waitForTargetTimerMax = 0.2f;
@@ -19,19 +28,19 @@ namespace Modules.EntitySystem.Scripts.Runtime
             if (waitForTargetTimer < 0)
             {
                 waitForTargetTimer += waitForTargetTimerMax;
-                FindTargets();
+                FindTargets(_entityTarget);
             }
         }
         
-        protected virtual void FindTargets()
+        protected virtual void FindTargets(Entities entityType)
         {
-            var targetMaxRadius = 10f;
+            var targetMaxRadius = 15f;
             var colliderArray = Physics2D.OverlapCircleAll(transform.position, targetMaxRadius);
 
             foreach (var targetCollider in colliderArray)
             {
-                var getTarget = targetCollider.GetComponent<IEnemyTarget>();
-                if (getTarget != null)
+                var getTarget = targetCollider.GetComponent<ITarget>();
+                if (getTarget != null && getTarget.EntityType == entityType)
                 {
                     if (target == null) target = getTarget.GetTransform();
                     else

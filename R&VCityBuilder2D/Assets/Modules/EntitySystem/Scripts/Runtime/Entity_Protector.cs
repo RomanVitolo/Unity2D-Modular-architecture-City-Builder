@@ -6,7 +6,7 @@ namespace Modules.EntitySystem.Scripts.Runtime
     {
         private void OnCollisionEnter2D(Collision2D other)
         {
-            var enemyTarget = other.gameObject.GetComponent<IEnemyTarget>();
+            var enemyTarget = other.gameObject.GetComponent<ITarget>();
             if (target != null)
             {
                 enemyTarget.UnitDamaged(10);
