@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace Gentleland.StemapunkUI.DemoAndExample
+namespace Gentleland.SteampunkUI.Scripts
 {
     public class ClockSlider : MonoBehaviour
     {

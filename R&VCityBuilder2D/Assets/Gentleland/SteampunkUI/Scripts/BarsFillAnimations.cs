@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Gentleland.StemapunkUI.DemoAndExample
+namespace Gentleland.SteampunkUI.Scripts
 {
     public class BarsFillAnimations : MonoBehaviour
     {

@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51dfc7c32eb040e584e91ce8f1ea27f7, type: 3}
+  m_Name: SugarProtector
+  m_EditorClassIdentifier: 
+  <Name>k__BackingField: Tower
+  <BuildingSprite>k__BackingField: {fileID: 944486141, guid: f1c78d47fa0e77346b55eb8a4fa4ccf9,
+    type: 3}
+  <PrefabType>k__BackingField: {fileID: 4325366361069683961, guid: 784f424c31ae5d84889a6b4d8d4bcc01,
+    type: 3}
+  <HasResourceData>k__BackingField: 0
+  <ResourcesGenerateData>k__BackingField:
+    MaxTimer: 0
+    ResourceType: {fileID: 0}
+    ResourceDetectionRadius: 0
+    MaxResourceAmount: 0
+  <MinPlacementRadius>k__BackingField: 3
+  <ConstructionsResourceCost>k__BackingField:
+  - ResourceType: {fileID: 11400000, guid: 08399d5bbd70a374392ecee7ac0085ba, type: 2}
+    Amount: 40
+  - ResourceType: {fileID: 11400000, guid: ea999e78e5556074fa593176e0ae63ea, type: 2}
+    Amount: 30
+  <MaxHealthAmount>k__BackingField: 80

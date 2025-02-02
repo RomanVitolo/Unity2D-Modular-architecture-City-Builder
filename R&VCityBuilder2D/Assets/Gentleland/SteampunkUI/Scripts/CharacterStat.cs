@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
-namespace Gentleland.StemapunkUI.DemoAndExample
+namespace Gentleland.SteampunkUI.Scripts
 {
     [RequireComponent(typeof(TextMeshProUGUI))]
     public class CharacterStat : MonoBehaviour

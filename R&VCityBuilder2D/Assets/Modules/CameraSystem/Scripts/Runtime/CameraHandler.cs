@@ -1,4 +1,4 @@
-﻿using Modules.GameEngine.Core.Scripts;
+﻿using Modules.GameEngine.Runtime.Scripts;
 using Unity.Cinemachine;
 using UnityEngine;
 

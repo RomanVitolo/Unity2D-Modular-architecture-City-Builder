@@ -1,14 +1,17 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Selectable))]
-public class KeyFieldUnSelect : MonoBehaviour
+namespace Gentleland.SteampunkUI.Scripts
 {
-    [SerializeField]
-    Selectable selectable;
-
-    public void UnSelect()
+    [RequireComponent(typeof(Selectable))]
+    public class KeyFieldUnSelect : MonoBehaviour
     {
-        if (selectable != null) selectable.Select();
+        [SerializeField]
+        Selectable selectable;
+
+        public void UnSelect()
+        {
+            if (selectable != null) selectable.Select();
+        }
     }
 }

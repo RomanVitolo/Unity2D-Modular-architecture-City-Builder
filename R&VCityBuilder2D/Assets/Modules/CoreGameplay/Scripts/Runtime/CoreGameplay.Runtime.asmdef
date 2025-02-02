@@ -1,0 +1,19 @@
+{
+    "name": "CoreGameplay.Runtime",
+    "rootNamespace": "",
+    "references": [
+        "GUID:939c6c545b474d34eaadce737bdc587e",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:9451941906d1b42438e5b44b1c538a77",
+        "GUID:cb4e6d8a81da67747b0386ed85e37785"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
