@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using Modules.CoreGameplay.Scripts.Runtime.ResourcesSystem;
+using TMPro;
 using UnityEngine;
 
 namespace Modules.CoreGameplay.Scripts.Runtime.UI

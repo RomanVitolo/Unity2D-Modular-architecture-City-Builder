@@ -1,7 +1,9 @@
 {
     "name": "EntitySystem.Runtime",
     "rootNamespace": "",
-    "references": [],
+    "references": [
+        "GUID:47562346dc259fc418e50cb685bcabbf"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

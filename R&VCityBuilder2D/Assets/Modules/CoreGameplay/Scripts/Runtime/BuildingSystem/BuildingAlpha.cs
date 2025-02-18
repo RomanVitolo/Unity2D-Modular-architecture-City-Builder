@@ -2,7 +2,7 @@
 using Modules.GameEngine.Runtime.Scripts;
 using UnityEngine;
 
-namespace Modules.CoreGameplay.Scripts.Runtime
+namespace Modules.CoreGameplay.Scripts.Runtime.BuildingSystem
 {
     public class BuildingAlpha : MonoBehaviour
     {

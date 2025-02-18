@@ -25,4 +25,4 @@ MonoBehaviour:
     MaxResourceAmount: 7
   <MinPlacementRadius>k__BackingField: 0
   <ConstructionsResourceCost>k__BackingField: []
-  <MaxHealthAmount>k__BackingField: 100
+  <MaxHealthAmount>k__BackingField: 5000

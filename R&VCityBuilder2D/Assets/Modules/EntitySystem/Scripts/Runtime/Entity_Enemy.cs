@@ -1,24 +1,23 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Modules.EntitySystem.Scripts.Runtime
 {
     public class Entity_Enemy : Entity, ITarget
     {
-        public static Entity_Enemy Create(Vector3 position)
-        {
-            var enemyPrefab = Resources.Load<Transform>("EnemyEntity");
-            var newEnemy = Instantiate(enemyPrefab, position, Quaternion.identity);
-
-            var enemy = newEnemy.GetComponent<Entity_Enemy>();
-            return enemy;
-        }
+        public Entities Entity;
+        public Entities EntityType => Entity;
+        
+        public event Action<ITarget> OnTargetDestroyed;
         
         [SerializeField] private Transform _mainBuildUnitTarget;
+        
         private Rigidbody2D _rb;
-
+        private EnemyPool enemyPool;
         private void Start()
         {
+            enemyPool ??= FindAnyObjectByType<EnemyPool>();
             _rb = GetComponent<Rigidbody2D>();
             
             waitForTargetTimer = Random.Range(0f, waitForTargetTimerMax);
@@ -30,27 +29,34 @@ namespace Modules.EntitySystem.Scripts.Runtime
             base.Update();
         }
 
+        private void OnDisable()
+        { 
+            OnTargetDestroyed?.Invoke(this);
+        }
+
         private void OnCollisionEnter2D(Collision2D other)
         {
             var target = other.gameObject.GetComponent<ITarget>();
             if (target != null)
             {
                 target.UnitDamaged(10);
-                Destroy(gameObject);
+                if (this != null)
+                    enemyPool.ReturnObject(this);
             }
         }
 
-        protected override void FindTargets(Entities entityType)
+        protected override void FindTargets(Entities entityType, LayerMask layerMask)
         {
-            base.FindTargets(entityType);
-            target ??= _mainBuildUnitTarget;
+            base.FindTargets(entityType, _targetLayer);
+            
+            unitTarget ??= _mainBuildUnitTarget.gameObject.GetComponent<ITarget>();
         }
 
         private void HandleMovement()
         {
-            if (target != null)
+            if (unitTarget != null)
             {
-                var moveDir = (target.position - transform.position).normalized;
+                var moveDir = (unitTarget.GetTransform().position - transform.position).normalized;
 
                 var moveSpeed = 6f;
                 _rb.linearVelocity = moveDir * moveSpeed ; 
@@ -59,14 +65,12 @@ namespace Modules.EntitySystem.Scripts.Runtime
                 _rb.linearVelocity = Vector2.zero;
         }
 
-        public Entities Entity;
-        public Entities EntityType => Entity;
-
         public Transform GetTransform()
         {
-            return this.transform;
-        }
-
+            if (this != null) return this.transform;
+            OnTargetDestroyed?.Invoke(this);
+            return null;
+        } 
         public void UnitDamaged(int damage)
         {
             Debug.Log("Do Damage");

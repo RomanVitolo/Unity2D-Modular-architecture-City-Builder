@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7258861952977127502}
   - component: {fileID: 8066234092712500702}
   - component: {fileID: 6520072434858553318}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CherryHarvester
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,7 +189,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c95737f75ec4b91869536114413b400, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Entity: 0
   _buildingTypeHolder: {fileID: -3782029715445461502}
+  _setHardcodeAmount: 0
 --- !u!1001 &1989280796152210571
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -198,6 +200,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4325366361069683961}
     m_Modifications:
+    - target: {fileID: 696991640098980177, guid: e2d0ce9313d42664db793cad25499e36,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1203426044804610076, guid: e2d0ce9313d42664db793cad25499e36,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1311194912247461928, guid: e2d0ce9313d42664db793cad25499e36,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -248,16 +260,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1478065248265816080, guid: e2d0ce9313d42664db793cad25499e36,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2320487225464436764, guid: e2d0ce9313d42664db793cad25499e36,
         type: 3}
       propertyPath: m_Name
       value: HealthBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 2320487225464436764, guid: e2d0ce9313d42664db793cad25499e36,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6903322998275094284, guid: e2d0ce9313d42664db793cad25499e36,
         type: 3}
       propertyPath: _healthUnit
       value: 
       objectReference: {fileID: 8066234092712500702}
+    - target: {fileID: 7532400809515345648, guid: e2d0ce9313d42664db793cad25499e36,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -282,10 +309,35 @@ PrefabInstance:
       propertyPath: _resourceGenerator
       value: 
       objectReference: {fileID: 6589173198991567151}
+    - target: {fileID: 590706581185323647, guid: e9e4faf252bd0d84c947721a41f3a4ab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 590869309820163160, guid: e9e4faf252bd0d84c947721a41f3a4ab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1080918987793865764, guid: e9e4faf252bd0d84c947721a41f3a4ab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3048687157818829460, guid: e9e4faf252bd0d84c947721a41f3a4ab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3360465187907108534, guid: e9e4faf252bd0d84c947721a41f3a4ab,
         type: 3}
       propertyPath: m_Name
       value: ResourceGeneratorOverlay
+      objectReference: {fileID: 0}
+    - target: {fileID: 3360465187907108534, guid: e9e4faf252bd0d84c947721a41f3a4ab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7708022232483792716, guid: e9e4faf252bd0d84c947721a41f3a4ab,
         type: 3}
@@ -336,6 +388,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8021212950268115357, guid: e9e4faf252bd0d84c947721a41f3a4ab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

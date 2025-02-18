@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Linq;
+using Modules.CoreGameplay.Scripts.Runtime.ResourcesSystem;
 using Modules.CoreGameplay.Scripts.Runtime.UI;
 using Modules.GameEngine.Runtime.Scripts;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Modules.CoreGameplay.Scripts.Runtime
+namespace Modules.CoreGameplay.Scripts.Runtime.BuildingSystem
 {
     public class BuildController : MonoBehaviour
     {

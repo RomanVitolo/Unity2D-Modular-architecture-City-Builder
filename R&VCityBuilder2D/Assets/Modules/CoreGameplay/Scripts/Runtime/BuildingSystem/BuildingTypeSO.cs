@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Modules.CoreGameplay.Scripts.Runtime.ResourcesSystem;
+using UnityEngine;
 
-namespace Modules.CoreGameplay.Scripts.Runtime
+namespace Modules.CoreGameplay.Scripts.Runtime.BuildingSystem
 {
     [CreateAssetMenu(fileName = "New BuildingType", menuName = "Modules/PlacementAPI/BuildingType")]
     public class BuildingTypeSO : ScriptableObject

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Modules.CoreGameplay.Scripts.Runtime.BuildingSystem;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,7 @@ namespace Modules.CoreGameplay.Scripts.Runtime.UI
 
         [SerializeField] private ToolTipUI _toolTip;
         [SerializeField] private Sprite _arrowSprite;
+        [SerializeField] private GameObject _selectedObject;
         [SerializeField] private BuildController _buildController;
         [SerializeField] private Transform _templateButton;
         [SerializeField] private List<BuildingTypeSO> _ignoredBuildingTypes = new List<BuildingTypeSO>();
@@ -30,12 +32,13 @@ namespace Modules.CoreGameplay.Scripts.Runtime.UI
             int index = 0;
             
             arrowButton = Instantiate(_templateButton, transform);
+            
             arrowButton.gameObject.SetActive(true);
 
             float offsetAmount = +130f;
             arrowButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(offsetAmount * index, 0);
 
-            arrowButton.Find("Image").GetComponent<Image>().sprite = _arrowSprite;
+            arrowButton.GetComponentInChildren<Image>().sprite = _arrowSprite;
 
             arrowButton.GetComponent<Button>().onClick.AddListener(() =>
             {
@@ -66,7 +69,7 @@ namespace Modules.CoreGameplay.Scripts.Runtime.UI
                 offsetAmount = +130f;
                 btnTransform.GetComponent<RectTransform>().anchoredPosition = new Vector2(offsetAmount * index, 0);
 
-                btnTransform.Find("Image").GetComponent<Image>().sprite = buildingType.BuildingSprite;
+                btnTransform.GetComponentInChildren<Image>().sprite = buildingType.BuildingSprite;
 
                 btnTransform.GetComponent<Button>().onClick.AddListener(() =>
                 {
@@ -92,17 +95,17 @@ namespace Modules.CoreGameplay.Scripts.Runtime.UI
         private void Start() => OnActiveBuildingTypeChanged += ActiveBuildingTypeButton;
         private void ActiveBuildingTypeButton()
         {
-            arrowButton.Find("Selected").gameObject.SetActive(false);
+            _selectedObject.SetActive(false);
             foreach (var buildingType in _buttonTransformsDictionary.Keys)
             {
                 var btnTransform = _buttonTransformsDictionary[buildingType];
-                btnTransform.Find("Selected").gameObject.SetActive(false);
+                _selectedObject.SetActive(false);
             }
             
             var activeBuildingType = _buildController.GetActiveBuildingType();
             if (activeBuildingType is null)
             {
-                arrowButton.Find("Selected").gameObject.SetActive(true);
+                _selectedObject.SetActive(true);
             }
             else
                 _buttonTransformsDictionary[activeBuildingType].Find("Selected").gameObject.SetActive(true);

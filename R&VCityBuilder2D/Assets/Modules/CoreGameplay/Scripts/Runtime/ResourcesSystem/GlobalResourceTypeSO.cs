@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Modules.CoreGameplay.Scripts.Runtime
+namespace Modules.CoreGameplay.Scripts.Runtime.ResourcesSystem
 {
     [CreateAssetMenu(fileName = "New Resource Type Container", menuName = "Modules/PlacementAPI/ResourceTypeContainer", order = 1)]
     public class GlobalResourceTypeSO : ScriptableObject

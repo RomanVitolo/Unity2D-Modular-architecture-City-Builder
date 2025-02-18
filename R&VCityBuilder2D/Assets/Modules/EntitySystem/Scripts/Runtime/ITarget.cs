@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Modules.EntitySystem.Scripts.Runtime
 {
@@ -7,5 +8,6 @@ namespace Modules.EntitySystem.Scripts.Runtime
         public Entities EntityType { get; }
         public Transform GetTransform();
         public void UnitDamaged(int damage);
+        event Action<ITarget> OnTargetDestroyed;
     }
 }

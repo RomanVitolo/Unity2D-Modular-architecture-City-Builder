@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Modules.CoreGameplay.Scripts.Runtime.BuildingSystem;
+using UnityEngine;
 
-namespace Modules.CoreGameplay.Scripts.Runtime
+namespace Modules.CoreGameplay.Scripts.Runtime.ResourcesSystem
 {
     public class ResourceGenerator : MonoBehaviour
     {

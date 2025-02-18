@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Modules.CoreGameplay.Scripts.Runtime
+namespace Modules.CoreGameplay.Scripts.Runtime.ResourcesSystem
 {
     [CreateAssetMenu(fileName = "New Resource Type", menuName = "Modules/PlacementAPI/ResourceType")]
     public class ResourceTypeSO : ScriptableObject
